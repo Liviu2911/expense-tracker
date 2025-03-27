@@ -5,7 +5,7 @@ export default async function getExpenses(_: Request, res: Response) {
   try {
     const data = await client.query("SELECT * FROM expenses");
     if (data.rowCount) {
-      res.status(200).send({ data: data.rows[0] });
+      res.status(200).send(data.rows);
       return;
     }
     res.status(404).send({ error: "Data not found" });
