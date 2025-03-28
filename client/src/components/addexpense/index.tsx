@@ -1,32 +1,42 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import AmountInput from "../inputs/amount";
 import CategoryInput from "../inputs/category";
 import DateInput from "../inputs/date";
 import DescriptionInput from "../inputs/descriprion";
-import { ExpensesContext } from "@/contexts/expensesContext";
 import { Category } from "@/types";
 import AddExpenseContext from "@/contexts/formContext";
+import NameInput from "../inputs/nameInput";
 
 export default function AddExpense() {
-  const data = useContext(ExpensesContext);
   const [date, setDate] = useState<Date | undefined>(new Date());
-  const [amount, setAmount] = useState<number>(-1);
+  const [amount, setAmount] = useState<string>("");
   const [category, setCategory] = useState<Category | undefined>();
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const postExpense = async (form: React.FormEvent<HTMLFormElement>) => {
     form.preventDefault();
-    // const descriprion = new FormData(form.currentTarget).get("description");
+    const description = new FormData(form.currentTarget).get("description");
+    const name = new FormData(form.currentTarget).get("name");
 
-    const res = await fetch("http://localhost:3000/expenses", {
-      method: "POST",
-    });
+    try {
+      const res = await fetch("http://localhost:3000/expenses", {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          category,
+          date,
+          amount: parseInt(amount),
+          description,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    const json = await res.json();
-    console.log(json);
+      const json = await res.json();
+      console.log(json);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -48,10 +58,13 @@ export default function AddExpense() {
           className="flex flex-col gap-4 mt-4 w-full"
         >
           <div className="grid grid-cols-2 gap-4">
-            <DateInput />
+            <NameInput />
             <AmountInput />
           </div>
-          <CategoryInput />
+          <div className="grid grid-cols-2 gap-4">
+            <CategoryInput />
+            <DateInput />
+          </div>
           <DescriptionInput />
           <button
             type="submit"

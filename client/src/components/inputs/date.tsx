@@ -55,7 +55,9 @@ export default function DateInput() {
           <Calendar
             mode="single"
             selected={date}
-            onSelect={(e) => setDate(e)}
+            onSelect={(e) => {
+              setDate(e || date);
+            }}
             className="bg-gray-900 rounded-lg border border-gray-700 text-gray-400"
           />
         </div>
