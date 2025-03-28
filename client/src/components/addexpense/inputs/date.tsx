@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { Calendar } from "../ui/calendar";
-import InputBox from "../inputbox";
+import { Calendar } from "../../ui/calendar";
+import InputBox from "../../inputbox";
 import { formatDate } from "date-fns";
 import { IoCalendarOutline } from "react-icons/io5";
 import AddExpenseContext from "@/contexts/formContext";

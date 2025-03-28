@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import InputBox from "../inputbox";
+import InputBox from "../../inputbox";
 import AddExpenseContext from "@/contexts/formContext";
 
 export default function AmountInput() {

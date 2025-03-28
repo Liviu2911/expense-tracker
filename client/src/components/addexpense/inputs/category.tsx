@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import InputBox from "../inputbox";
+import InputBox from "../../inputbox";
 import { Category } from "@/types";
 import { IoIosArrowDown } from "react-icons/io";
 import AddExpenseContext from "@/contexts/formContext";

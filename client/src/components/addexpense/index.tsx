@@ -1,11 +1,11 @@
 import { useState } from "react";
-import AmountInput from "../inputs/amount";
-import CategoryInput from "../inputs/category";
-import DateInput from "../inputs/date";
-import DescriptionInput from "../inputs/descriprion";
+import AmountInput from "./inputs/amount";
+import CategoryInput from "./inputs/category";
+import DateInput from "./inputs/date";
+import DescriptionInput from "./inputs/descriprion";
 import { Category } from "@/types";
 import AddExpenseContext from "@/contexts/formContext";
-import NameInput from "../inputs/nameInput";
+import NameInput from "./inputs/nameInput";
 
 export default function AddExpense() {
   const [date, setDate] = useState<Date | undefined>(new Date());
@@ -40,7 +40,7 @@ export default function AddExpense() {
   };
 
   return (
-    <div className="rounded-lg border border-gray-700 p-4 mt-12 w-[50%]">
+    <div className="rounded-lg border border-gray-700 p-4 mt-12">
       <h1 className="capitalize font-semibold text-lg">add new expense</h1>
 
       <AddExpenseContext.Provider

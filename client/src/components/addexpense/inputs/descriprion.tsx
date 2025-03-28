@@ -1,4 +1,4 @@
-import InputBox from "../inputbox";
+import InputBox from "../../inputbox";
 
 export default function DescriptionInput() {
   return (

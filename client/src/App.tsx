@@ -4,6 +4,7 @@ import ChangeTheme from "./components/changeTheme";
 import { Expense } from "./types";
 import { ExpensesContext } from "./contexts/expensesContext";
 import AddExpense from "./components/addexpense";
+import Expenses from "./components/expenses";
 
 function App() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
@@ -46,7 +47,11 @@ function App() {
           <ExpensesContext.Provider value={data}>
             <ChangeTheme />
             <h1 className="font-semibold text-2xl">Expense Tracker</h1>
-            <AddExpense />
+            <div className="w-full grid grid-cols-2 gap-12">
+              <AddExpense />
+            </div>
+
+            <Expenses />
           </ExpensesContext.Provider>
         ) : (
           <h1>Loading...</h1>
